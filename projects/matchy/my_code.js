@@ -113,12 +113,12 @@ console.log(animals.length);
 
 //  Write a comment in your code that explains why you chose this data structure.
 //  Create a variable called friends and assign it to the data structure that you chose.
-var friends = {};
+var friends = [];
 //  Take a look at the documentation for Math.random here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 //  Write a function that takes our animals array and returns a random element using Math.random
 var getRandomAnimal = function(){
     
-    var randomIndex = Math.round(Math.random() * (animals.length-1));
+    var randomIndex = Math.floor(Math.random() * animals.length);
     console.log(randomIndex);
     return animals[randomIndex];
 
@@ -126,7 +126,9 @@ var getRandomAnimal = function(){
 
 //  Using this function that you just created, get a random animal and add its name to friends.
 var randomAnimal = getRandomAnimal(animals);
-friends.name = randomAnimal.name;
+
+friends.push(randomAnimal.name);
+
 
 //  inspect friends.
 console.log(friends);
@@ -135,3 +137,82 @@ antelope['friends'] = friends;
 //  inspect your work.
 
 console.log(antelope);
+
+var tigerFriends = [];
+tigerFriends.push(getRandomAnimal(animals).name);
+tigerFriends.push(getRandomAnimal(animals).name);
+tiger['friends'] = tigerFriends;
+
+
+
+
+// Open up my_code.js in your editor.
+// Implement a function called search that:
+
+// Takes 1 paramater, a name of an animal
+// Returns the animal's object if an animal with that name exists
+// Returns null if no animal with that name exists
+var search = function(searchName){
+    var found = null;
+    for (var i = 0; i < animals.length; i++){
+        if (searchName === animals[i].name){
+         found = animals[i];
+         return found;
+        }
+        
+    }
+    return found;
+};
+
+// Use the search bar at the top of the page to make sure your function works.
+//     HELL YEAH
+
+// Write a function called edit that:
+// Takes 2 parameters, a name of an animal and an object
+// If an animal with that name exists, replace it's entire object with the new object
+// Otherwise do nothing
+// Test it on the website
+
+var edit = function(animalName, object){
+    for (var i = 0; i < animals.length; i++){
+        if (animalName === animals[i].name){
+            animals[i] = object;
+        }
+    }
+    
+};
+
+// Write a function called remove that:
+// Takes 1 parameter, a name of an animal
+// If an animal with that name exists, remove it
+// Test that it works on the website
+
+var remove = function(animalName){
+    for (var i = 0; i < animals.length; i++){
+        if (animalName === animals[i].name){
+            animals.splice(i, 1);
+        }
+    }
+};
+
+// Write a function called create that:
+// Takes 1 parameter, an object
+// Checks that the object has a name property with a length > 0
+// Checks that the object has a species property with a length > 0
+// Has a unique name, meaning no other animals have that name
+// Adds this new object to the animals array, only if all the other conditions pass.
+// Make sure it works
+
+var create = function(object){
+    if(object.name.length > 0 && object.species.length > 0){
+        var exist = false;
+        for( var i = 0; i < animals.length; i++){
+            if (object.name === animals[i].name){
+               exist = true;
+            } 
+        }
+        if(exist === false){
+            animals.push(object);
+        }
+    }
+};
