@@ -152,7 +152,7 @@ tiger['friends'] = tigerFriends;
 // Takes 1 paramater, a name of an animal
 // Returns the animal's object if an animal with that name exists
 // Returns null if no animal with that name exists
-var search = function(searchName){
+function search(searchName){
     var found = null;
     for (var i = 0; i < animals.length; i++){
         if (searchName === animals[i].name){
@@ -163,6 +163,8 @@ var search = function(searchName){
     }
     return found;
 };
+//       convert for case insensitivity
+
 
 // Use the search bar at the top of the page to make sure your function works.
 //     HELL YEAH
@@ -216,3 +218,22 @@ var create = function(object){
         }
     }
 };
+
+
+
+// function create(object){
+//     if(object.name.length && object.species.length && !search(object.name)) 
+//        animals.push(object);
+// }
+
+// function create(object){
+//   if(!object.name.length && !object.species.length) return;  //don't need >0 since they evaluate that way
+  
+  
+//   for( var i = 0; i < animals.length; i++){
+//       if (object.name === animals[i].name){
+//         return;
+//       } 
+//      }
+//   animals.push(object);  
+// };
