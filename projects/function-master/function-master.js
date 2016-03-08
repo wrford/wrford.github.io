@@ -74,3 +74,10 @@ function welcomeMessage(obj){
     var output = 'Welcome' + ' ' + capitalizeWord(obj.name) + '!';
     return output.trim();
 }
+
+// profileInfo() : Should take an object with a name an a species and return '<Name> is a <Species>'
+
+function profileInfo(obj){
+    var output = capitalizeWord(obj.name) + ' is a ' + capitalizeWord(obj.species);
+    return output.trim();
+}
