@@ -71,13 +71,87 @@ function capitalizeAllWords(str){
 
 function welcomeMessage(obj){
     
-    var output = 'Welcome' + ' ' + capitalizeWord(obj.name) + '!';
-    return output.trim();
+    return 'Welcome' + ' ' + capitalizeWord(obj.name) + '!';
 }
 
 // profileInfo() : Should take an object with a name an a species and return '<Name> is a <Species>'
 
 function profileInfo(obj){
-    var output = capitalizeWord(obj.name) + ' is a ' + capitalizeWord(obj.species);
-    return output.trim();
+    return capitalizeWord(obj.name) + ' is a ' + capitalizeWord(obj.species);
+}
+
+// maybeNoises() : Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises' 
+
+function maybeNoises(obj){
+    console.log(obj.noises);
+    if (obj.noises === undefined){
+        return 'there are no noises';
+        
+    } else if (obj.noises.length<1) return 'there are no noises';
+    else return obj.noises.join(' ');
+}
+
+// hasWord() : Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
+
+function hasWord(wordString, word){
+    if (wordString.includes(word)) return true;
+    else return false;
+    
+}
+
+// addFriend() : Should take a name and an object and add the name to the object's friends array then return the object
+
+function addFriend(name, obj){
+    obj.friends.push(name);
+    return obj;
+}
+
+// isFriend() : Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
+
+//The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+function isFriend(name, obj){
+    console.log(obj.friends);
+    // var found = obj.friends.indexof(name);
+    if (obj.friends===undefined) return false;
+    return obj.friends.includes(name);
+}
+
+// nonFriends() : Should take a name and a list of people, and return a list of all the names that <name> is not friends with
+function nonFriends(aname, list){
+    // console.log(list);
+    // console.log(aname);
+    
+    // var notFriends =[];
+    
+    // for (var i = 0; 1 < list.length; i++){
+    //     // if (list[i].friends === undefined) notFriends.push(list[i].name);
+    //     // else if (list[i].friends.length ===0) notFriends.push(list[i].name);
+    //     // else if (!list[i].friends.includes(aname))
+    //     // notFriends.push(list[i].name);
+    //     for (list[i].friends in list[i]){
+    //         if (list[i].friends === undefined) notFriends.push(list[i].name);
+    //         else if (list[i].friends.length ===0) notFriends.push(list[i].name);
+    //         else if (!list[i].friends.includes(aname))
+    //         notFriends.push(list[i].name);
+            
+    //     }
+    // }
+    // return notFriends;
+} 
+
+// updateObject() : Should take an object, a key and a value. Should update the property <key> on <object> with new <value>.
+//If <key> does not exist on <object> create it. 
+
+function updateObject(obj, key, value){
+    obj[key] = value;
+    return obj;
+}
+
+// removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
+
+function removeProperties(obj, stringArray){
+    for (var key in obj){
+        if(stringArray.includes(key)) delete obj.key;
+    }
+    return obj;
 }
