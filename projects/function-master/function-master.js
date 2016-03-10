@@ -12,20 +12,6 @@ function keysToString(obj){
     return Object.keys(obj).join(' ');
 }
 
-// function keysToString(obj){
-//     var output = '';
-//     for (var key in obj){
-//         if (obj.key ===obj[obj.length-1]){
-//             output += key;
-//         }
-//         else
-//         output += key;
-//         output += ' ';
-        
-//     }
-//     return output;
-// }
-
 // valuesToString() : Should take an object and return all its string values in a string each separated with a space
 function valuesToString(obj){
     var output = '';
@@ -57,9 +43,7 @@ function capitalizeWord(str){
 
 function capitalizeAllWords(str){
     var split = str.split(' ');
-    
     var out = '';
-    
     for (var i =0;i<split.length; i++){
         out += capitalizeWord(split[i]) + ' ';
     }
@@ -70,7 +54,6 @@ function capitalizeAllWords(str){
 // welcomeMessage() : Should take an object with a name property and return 'Welcome <Name>!'
 
 function welcomeMessage(obj){
-    
     return 'Welcome' + ' ' + capitalizeWord(obj.name) + '!';
 }
 
@@ -84,10 +67,8 @@ function profileInfo(obj){
 
 function maybeNoises(obj){
     console.log(obj.noises);
-    if (obj.noises === undefined){
-        return 'there are no noises';
-        
-    } else if (obj.noises.length<1) return 'there are no noises';
+    if (obj.noises === undefined) return 'there are no noises';
+    if (obj.noises.length<1) return 'there are no noises';
     else return obj.noises.join(' ');
 }
 
@@ -111,13 +92,12 @@ function addFriend(name, obj){
 //The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
 function isFriend(name, obj){
     console.log(obj.friends);
-    // var found = obj.friends.indexof(name);
     if (obj.friends===undefined) return false;
     return obj.friends.includes(name);
 }
 
 function arrayIncludes(array, element){
-    return (array.indexOf(element)> -1);
+    return (array.indexOf(element) > -1);
 }
 
 
@@ -145,7 +125,6 @@ function nonFriends(name, people){
             out.push(currentPerson.name);
         }
     }
-    
     return out;
 } 
 
@@ -160,9 +139,22 @@ function updateObject(obj, key, value){
 // removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
 
 function removeProperties(obj, stringArray){
-    var editedObj = obj;
+    //var editedObj = obj;
+    console.log(obj);
+    console.log(stringArray);
     for (var key in obj){
+        if(stringArray.indexOf(key) > -1) delete obj[key];
+    
     }   
-    return editedObj;
+    return obj;
 }
 
+// dedup() : Should take an array and return an array with all the duplicates removed 
+function dedup(array){
+    var newArray = [];
+    for (var i = 0; i < array.length; i++){
+        if(newArray.indexOf(array[i]) > -1) continue;
+        newArray.push(array[i]);
+    }
+    return newArray;
+}
