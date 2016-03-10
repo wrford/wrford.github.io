@@ -92,8 +92,9 @@ function addFriend(name, obj){
 //The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
 function isFriend(name, obj){
     console.log(obj.friends);
-    if (obj.friends===undefined) return false;
-    return obj.friends.includes(name);
+    // if (obj.friends===undefined) return false;
+    // return obj.friends.includes(name);
+    return (obj.friends!== undefined && obj.friends.indexOf(name)>-1)
 }
 
 function arrayIncludes(array, element){
@@ -139,13 +140,9 @@ function updateObject(obj, key, value){
 // removeProperties() : Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
 
 function removeProperties(obj, stringArray){
-    //var editedObj = obj;
-    console.log(obj);
-    console.log(stringArray);
     for (var key in obj){
         if(stringArray.indexOf(key) > -1) delete obj[key];
-    
-    }   
+    }
     return obj;
 }
 
