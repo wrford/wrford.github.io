@@ -259,6 +259,10 @@ _.reject = function reject(array, fn){
 }
 */
 
+_.partition = function partition(array, func){
+    
+    return [_.filter(array, func), _.reject(array, func)];
+};
 
 /** _.unique()
 * Arguments:
@@ -270,6 +274,19 @@ _.reject = function reject(array, fn){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function unique(array){
+    // var myArray = array;
+    // _.indexOf(myArray, val)
+    
+    
+    // for (var i = 0; i<myArray.length; i++){
+    //     if (_.indexOf(myArray, myArray[i]) > 0){
+    //         myArray.splice(i, 1);
+    
+    //     }    
+    // }
+   // return myArray;
+};
 
 /** _.map()
 * Arguments:
