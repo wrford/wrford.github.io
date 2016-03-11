@@ -191,19 +191,27 @@ _.indexOf = function indexOf(arr, val){
 *   use _.each in your implementation
 */
 
-_.filter = function filter(arr, func){
-    console.log(arr);
-    var returnArray = [];
-    for (var i = 0; i< arr.length; i++){
-        if (func(arr[i], i, arr) === true) returnArray.push(arr[i]);
-        if (func(arr[i], i, arr) === false) continue;
-    }
-
-   // _.each(arr, function(){
-   //if (func(arr[ireturnArray.push(arr[var i])})
-        return returnArray;
-    
+_.filter = function filter(arr, fn){
+    var out = [];
+    _.each(arr, function (el, i, col){
+       if(fn(el, i, col)) out.push(el); 
+    });
+    return out;
 };
+// _.filter = function filter(arr, func){
+//     console.log(arr);
+//     var returnArray = [];
+//     //_.each(arr,abc(arr[0],returnArray,func));
+    
+//     for (var i = 0; i< arr.length; i++){
+//         if (func(arr[i], i, arr) === true) returnArray.push(arr[i]);
+//         if (func(arr[i], i, arr) === false) continue;
+//     }
+//     return returnArray;
+    
+// };
+
+
 
 /** _.reject()
 * Arguments:
@@ -217,14 +225,20 @@ _.filter = function filter(arr, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
-_.reject = function reject(arr, func){
-    console.log(arr);
-    console.log(func);
-    var returnArray = [];
-    _.filter(arr, !func);
-    return returnArray;
+_.reject = function reject(array, fn){
+    // _.filter(arr, function(el, i, arr){
+    //     var out =[];
+    //     return  out.push(!fn);
+        
+    // });
+    return _.filter(array, function(el, i, arr){
+        return !fn(el, i , arr);
+        
+    });
+    
+    
 };
+
 
 /** _.partition()
 * Arguments:
