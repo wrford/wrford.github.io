@@ -110,16 +110,16 @@ _.first =function first(array, number){
 *   _.last(["a", "b", "c"], "ponies") -> ["a","b","c"]
 */
 
-// _.last = function last(array, number){
-//   if (!Array.isArray(array) || number < 0) return [];
-//   console.log(array);
-//   console.log(number);
-//   if (number === undefined || number === null || typeof number !== 'number'){
-//       return array[array.length-1];
-//   }
-//   if (number > array.length) return array;
-//   return array.slice(number-1, array.length);
-// };
+_.last = function last(array, number){
+  if (!Array.isArray(array) || number < 0) return [];
+  console.log(array);
+  console.log(number);
+  if (number === undefined || number === null || typeof number !== 'number'){
+      return array[array.length-1];
+  }
+  if (number > array.length) return array;
+  return array.slice(number-1, array.length);
+};
 
 /** _.each()
 * Arguments:
@@ -137,18 +137,18 @@ _.first =function first(array, number){
 *      -> should log "a" "b" "c" to the console
 */
 
-// _.each = function each(col, myFunction){
-//     if (Array.isArray(col)){
-//         for (var i = 0; 1< col.length;i++){
-//             myFunction(col[i], i, col);
-//         }
-//     if (_.typeOf(col) === 'object'){
-//         for (var key in col){
-//             myFunction(col[key], key, col);
-//         }
-//     }
-//     }
-// };
+_.each = function each(col, myFunction){
+   if (_.typeOf(col)==='array'){
+       for (var i = 0; i < col.length; i++){
+           myFunction(col[i], i, col);
+       }
+   }
+   if (_.typeOf(col)==='object'){
+       for (var key in col){
+           myFunction(col[key], key, col);
+       }
+   }
+};
 
 /** _.indexOf()
 * Arguments:
@@ -165,7 +165,15 @@ _.first =function first(array, number){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function indexOf(arr, val){
+    var index = -1;
+    for (var i = 0; i < arr.length; i++){
+      if (arr[i] !== val) continue;
+      if (arr[i] === val) return index = i;
+      
+  }  
+  return index;
+};
 
 /** _.filter()
 * Arguments:
@@ -183,6 +191,19 @@ _.first =function first(array, number){
 *   use _.each in your implementation
 */
 
+_.filter = function filter(arr, func){
+    console.log(arr);
+    var returnArray = [];
+    for (var i = 0; i< arr.length; i++){
+        if (func(arr[i], i, arr) === true) returnArray.push(arr[i]);
+        if (func(arr[i], i, arr) === false) continue;
+    }
+
+   // _.each(arr, function(){
+   //if (func(arr[ireturnArray.push(arr[var i])})
+        return returnArray;
+    
+};
 
 /** _.reject()
 * Arguments:
@@ -197,6 +218,13 @@ _.first =function first(array, number){
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function reject(arr, func){
+    console.log(arr);
+    console.log(func);
+    var returnArray = [];
+    _.filter(arr, !func);
+    return returnArray;
+};
 
 /** _.partition()
 * Arguments:
