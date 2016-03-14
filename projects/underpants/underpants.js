@@ -138,11 +138,13 @@ _.last = function last(array, number){
 */
 
 _.each = function each(col, myFunction){
+    
    if (_.typeOf(col)==='array'){
        for (var i = 0; i < col.length; i++){
            myFunction(col[i], i, col);
        }
    }
+   
    if (_.typeOf(col)==='object'){
        for (var key in col){
            myFunction(col[key], key, col);
@@ -275,17 +277,15 @@ _.partition = function partition(array, func){
 */
 
 _.unique = function unique(array){
-    // var myArray = array;
-    // _.indexOf(myArray, val)
+    var myArray = [];
     
+    for(var i = 0; i < array.length; i++){
+        if(_.indexOf(myArray, array[i])>-1) continue;
+        myArray.push(array[i]);
+    }
     
-    // for (var i = 0; i<myArray.length; i++){
-    //     if (_.indexOf(myArray, myArray[i]) > 0){
-    //         myArray.splice(i, 1);
-    
-    //     }    
-    // }
-   // return myArray;
+    return myArray;
+
 };
 
 /** _.map()
@@ -412,6 +412,14 @@ _.unique = function unique(array){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
+_.extend = function extend(obj1, obj2){
+    //arguments[]
+    for (var i = 1; i<arguments.length; i++){
+        for (var key in arguments[i]){
+            obji[key] = arguments[i]
+        }
+    }
+};
 
 // This is the proper way to end a javascript library
 }());
