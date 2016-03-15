@@ -303,7 +303,23 @@ _.unique = function unique(array){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function map(col, func){
+    var returnArray = [];
+    if (_.typeOf(col) === 'array'){
+       for (var i = 0; i < col.length; i++){
+           returnArray.push(func(col[i], i, col));
+           
+       }
+   }
+   
+   if (_.typeOf(col) === 'object'){
+       for (var key in col){
+           returnArray.push(func(col[key], key, col));
+       }
+   }
+   return returnArray;
+    
+};
 
 /** _.pluck()
 * Arguments:
@@ -414,11 +430,12 @@ _.unique = function unique(array){
 
 _.extend = function extend(obj1, obj2){
     //arguments[]
-    for (var i = 1; i<arguments.length; i++){
+    for (var i = 1; i < arguments.length; i++){
         for (var key in arguments[i]){
-            obji[key] = arguments[i]
+            obj1[key] = arguments[i][key];
         }
     }
+    return obj1;
 };
 
 // This is the proper way to end a javascript library
