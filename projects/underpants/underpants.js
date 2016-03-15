@@ -332,6 +332,13 @@ _.map = function map(col, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function pluck(array, prop){
+    return _.map(array, function(el) {
+        return el[prop];
+    }); 
+    
+    
+};
 
 /** _.contains()
 * Arguments:
@@ -347,6 +354,11 @@ _.map = function map(col, func){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+
+_.contains = function contains(array, value){
+    return (_.indexOf(array, value) > -1) ? true : false;
+    
+};
 
 
 /** _.every()
@@ -370,6 +382,9 @@ _.map = function map(col, func){
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function every(){
+    
+};
 
 /** _.some()
 * Arguments:
@@ -392,6 +407,9 @@ _.map = function map(col, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function some(){
+    
+};
 
 /** _.reduce()
 * Arguments:
@@ -412,6 +430,9 @@ _.map = function map(col, func){
 *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
 */
 
+_.reduce = function reduce(){
+    
+};
 
 /** _.extend()
 * Arguments:
