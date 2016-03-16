@@ -85,7 +85,7 @@ _.typeOf = function typeOf(value){
 *   _.first(["a", "b", "c"], "ponies") -> "a"
 */
 
-_.first =function first(array, number){
+_.first = function first(array, number){
   if (!Array.isArray(array) || number < 0)  return [];
   
   if (number === undefined || number === null || typeof number !== 'number' || number === 1) {
@@ -382,8 +382,35 @@ _.contains = function contains(array, value){
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-_.every = function every(){
+_.every = function every(col, func){
+    var filter;
+    if(_.typeOf(col) === 'array'){
+        if (_.typeOf(func) ==='function'){
+        return (_.filter(col, func).length === col.length);
+        }
+        else {
+            filter = _.filter(col, function(el, i, arr){
+                return el;
+            });
+            return (filter.length === col.length);
+        }
+    }
     
+    if (_.typeOf(col) === 'object'){
+        var theKeys = Object.keys(col);
+        if (_.typeOf(func) === 'function'){
+            filter = _.filter(theKeys, function(el, i, arr){
+               return func(col[el], el, col); 
+            });
+            return (filter.length === theKeys.length);
+        }
+        else {
+            filter = _.filter(theKeys, function(el, i, arr) {
+                return col[el];   
+            });
+        }
+    }
+   
 };
 
 /** _.some()
