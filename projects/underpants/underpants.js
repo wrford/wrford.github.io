@@ -434,8 +434,35 @@ _.every = function every(col, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
-_.some = function some(){
+_.some = function some(col, func){
+    var filter;
+    if(_.typeOf(col) === 'array'){
+        if (_.typeOf(func) ==='function'){
+        filter = _.filter(col, func); 
+        return (filter.length > 0);
+        }
+        else {
+            filter = _.filter(col, function(el, i, arr){
+                return el;
+            });
+            return (filter.length > 0);
+        }
+    }
     
+    if (_.typeOf(col) === 'object'){
+        var theKeys = Object.keys(col);
+        if (_.typeOf(func) === 'function'){
+            filter = _.filter(theKeys, function(el, i, arr){
+               return func(col[el], el, col); 
+            });
+            return (filter.length > 0);
+        }
+        else {
+            filter = _.filter(theKeys, function(el, i, arr) {
+                return col[el];   
+            });
+        }
+    }
 };
 
 /** _.reduce()
@@ -444,12 +471,12 @@ _.some = function some(){
 *   2) A function
 *   3) A seed
 * Objectives:
-*   1) Call <function> for every element in <collection> passing the arguments:
+*   1) Call <function> for every element in <array> passing the arguments:
 *         previous result, element, index
 *   2) Use the return value of <function> as the "previous result"
 *      for the next iteration
 *   3) On the very first iteration, use <seed> as the "previous result"
-*   4) If no <seed> was given, use the first element/value of <collection> as <seed>
+*   4) If no <seed> was given, use the first element/value of <array> as <seed>
 *   5) After the last iteration, return the return value of the final <function> call
 * Gotchas:
 *   1) What if <seed> is not given?
@@ -457,8 +484,18 @@ _.some = function some(){
 *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
 */
 
-_.reduce = function reduce(){
-    
+_.reduce = function reduce(array, func, seed) {
+
+
+    for (var i = 0; i < array.length; i++) {
+        if (_.typeOf(seed) === 'undefined') {
+            seed = array[0];
+            continue;
+        }
+        seed = func(seed, array[i], i);
+    }
+
+    return seed;
 };
 
 /** _.extend()
@@ -477,8 +514,9 @@ _.reduce = function reduce(){
 */
 
 _.extend = function extend(obj1, obj2){
-    //arguments[]
-    for (var i = 1; i < arguments.length; i++){
+   
+    for (var i = 0; i < arguments.length; i++){
+        if (i === 0) continue;
         for (var key in arguments[i]){
             obj1[key] = arguments[i][key];
         }
