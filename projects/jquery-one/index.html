@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jQuery One</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>jQuery One</h1>
+    <section>
+      <ul>
+        <li>You will code in this index.html file, save and refresh to see the results of your work.</li>
+        <li><a href="directions.html" target="_blank">Directions...</a></li>
+      </ul>
+    </section>
+    <!-- YOUR HTML MARKUP GOES BELOW THIS COMMENT  -->
+    
+    <div id="everything">
+        <h1>A heading!</h1>
+        <p>Here's some text!</p>
+        <p>Here's a second set of text!</p>
+        <div class="holder">
+            <ul>
+                <li>List Item 1</li>
+                <li>List Item 2</li>
+                <li>List Item 3</li>
+            </ul>
+        </div>
+        <div class="holder">
+            <ul>
+                <li>List Item 4</li>
+                <li>List Item 5</li>
+                <li>List Item 6</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    <!-- YOUR HTML MARKUP GOES ABOVE THIS COMMENT  -->
+  </div>
+  <script>
+    (function (){
+      
+     //exercise 1.2
+      // Turn h1s blue
+      $('h1').css('color', 'blue');
+      // Make the element with id "everything" have a red background
+      $('#everything').css('background-color', 'red');
+      // Make all elements with class "holder" have a black border
+      $('.holder').css('border', '1px solid black');
+      // Make all li elements inside of ul elements have bold text
+      $('ul li').css('font-weight', 'bold');
+      // Makes all p elements immediately following an h1 green
+      $('h1 + p').css('color', 'green');
+            
+      
+      //exercise 2.1
+    //       Prepend a new <div> with the text "hello" to div#container
+    $('<div>')
+      .text('hello')
+      .prependTo('.container');
+   // Append a new <div> with the text "goodbye" to div#container
+    $('<div>')
+      .text('goodbye')
+      .appendTo('.container');
+    //Prepend a new <div> to the body, append a new <div> after. How is this different than above?
+    $('<div>')
+      .text('Prepended to body')
+      .prependTo('body');
+    $('<div>')
+      .text('Appended to body')
+      .appendTo('body');
+    
+    // Place a new div#first before the first div.holder
+    $('<div>')
+      .text('#first div.holder')
+      .insertBefore('.holder:eq(0)');
+    // Place a new div#last with text after the second div.holder
+    $('<div>')
+      .text('#last after second div.holder')
+      .insertAfter('.holder:eq(1)');
+      
+      //Create a newDetachedDiv var which is a jQuery object of a new <div> with some text in it
+      var newDetachedDiv = $('<div>some TEXT</div>');
+      // Change some of its css properties. Is it on the page yet? no
+      newDetachedDiv.css('color','orange');
+      // now append it. Is it on the page yet? yes
+      newDetachedDiv.appendTo('body');
+      
+      
+      //Run this code: $('div').remove(); What does it do? removes everything
+      // Reload the page and do this: $('.container').empty(); How is that different than above?
+      //just removes the elements in the container. body stuff is still there.
+      
+      // What does this code do? 
+      var orphanNode = $('#target').detach();
+      
+      // Now try adding: $('#container').append(orphanNode); Why would this be useful?
+      $('#container').append(orphanNode);
+      
+      // Use the .find() method to do something interesting: http://api.jquery.com/find/
+      
+      // Play around with the .parent() and .children() methods: http://api.jquery.com/ // (hint: [CMD + F] and search "parent") // var parentNode = $('#target').parent(); // var childrenNodes = parentNode.children();
+
+
+    })();
+  </script>
+</body>
+
+</html>
