@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="bower_components/lodash/lodash.min.js"></script>
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="bower_components/notes/notes.js"></script>
-        <script type="text/javascript" src="js/lib/spin.min.js"></script>
-        <script type="text/javascript" src="js/view/pacifier.js"></script>
-        <script type="text/javascript" src="js/products.js"></script>
+        <link rel="stylesheet" href="products.css" />
+        
         <title>Product Project</title>
     </head>
     <body>
         <div id="container" class="container">
             <nav>
                 <h1>Product Project</h1>
+                <input type = 'search' id = 'search'/>
             </nav>
             <main>
+                <ul id='products'>
+                    
+                </ul>
                 
             </main>
             
         </div>
+        <div id='product-details' style='display: none;'>
+            <div id='product-details-inner'>
+                <button class='close'>X</button>
+                <div class='image-container'>
+                    <img></img>
+                </div>
+                <div class='features'>
+                <h4 class='desc'></h4>
+                <div class='specs'></div>
+                </div>
+            </div>
+        </div>
+        <script src="bower_components/lodash/lodash.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/notes/notes.js"></script>
+        <script type="text/javascript" src="js/lib/spin.min.js"></script>
+        <script type="text/javascript" src="js/view/pacifier.js"></script>
+        <script type="text/javascript" src="js/products.js"></script>
         <script>
             $(function () {
                 window.opspark.notes.show();
